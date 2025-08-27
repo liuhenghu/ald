@@ -1,0 +1,10 @@
+[copr:copr.fedorainfracloud.org:hhorak:devtoolset-4-rebuild-bootstrap]
+name=Copr repo for devtoolset-4-rebuild-bootstrap owned by hhorak
+baseurl=https://download.copr.fedorainfracloud.org/results/hhorak/devtoolset-4-rebuild-bootstrap/epel-7-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=0
+gpgkey=https://download.copr.fedorainfracloud.org/results/hhorak/devtoolset-4-rebuild-bootstrap/pubkey.gpg
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1

@@ -1,0 +1,119 @@
+check process ReplayRecord with pidfile /root/platform/ReplayRecord/RecordServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/ReplayRecord && ../bin/ReplayRecord --UNIQUE'"
+    stop program = "/bin/killall ReplayRecord"
+    if not exist then restart
+
+check process ReplayServer with pidfile /root/platform/ReplayServer/ReplayServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/ReplayServer && ../bin/ReplayServer --UNIQUE'"
+    stop program = "/bin/killall ReplayServer"
+    if not exist then restart
+
+check process CrossServer with pidfile /root/platform/CrossServer/CrossServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/CrossServer && ../bin/CrossServer --UNIQUE'"
+    stop program = "/bin/killall CrossServer"
+    if not exist then restart
+
+check process WSceneServer with pidfile /root/platform/WSceneServer/SceneServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/WSceneServer && ../bin/WSceneServer --UNIQUE'"
+    stop program = "/bin/killall WSceneServer"
+    if not exist then restart
+
+check process MatchServer with pidfile /root/platform/MatchServer/MatchServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/MatchServer && ../bin/MatchServer --UNIQUE'"
+    stop program = "/bin/killall MatchServer"
+    if not exist then restart
+
+check process DungeonServer with pidfile /root/platform/DungeonServer/DungeonServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/DungeonServer && ../bin/DungeonServer --UNIQUE'"
+    stop program = "/bin/killall DungeonServer"
+    if not exist then restart
+
+check process UdpConnServer with pidfile /root/platform/UdpConnServer/UdpConnServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/UdpConnServer && ../bin/UdpConnServer --UNIQUE'"
+    stop program = "/bin/killall UdpConnServer"
+    if not exist then restart
+
+check process RelayServer with pidfile /root/platform/RelayServer/RelayServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/RelayServer && ../bin/RelayServer --UNIQUE'"
+    stop program = "/bin/killall RelayServer"
+    if not exist then restart
+
+check process BattleScene with pidfile /root/platform/BattleScene/BattleScene.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/BattleScene && ../bin/BattleScene --UNIQUE'"
+    stop program = "/bin/killall BattleScene"
+    if not exist then restart
+
+check process BattleServer with pidfile /root/platform/BattleServer/BattleServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/BattleServer && ../bin/BattleServer --UNIQUE'"
+    stop program = "/bin/killall BattleServer"
+    if not exist then restart
+
+check process UdpConnServer1 with pidfile /root/platform/UdpConnServer1/UdpConnServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/UdpConnServer1 && ../bin/UdpConnServer1 --UNIQUE'"
+    stop program = "/bin/killall UdpConnServer1"
+    if not exist then restart
+
+check process RelayServer1 with pidfile /root/platform/RelayServer1/RelayServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/RelayServer1 && ../bin/RelayServer1 --UNIQUE'"
+    stop program = "/bin/killall RelayServer1"
+    if not exist then restart
+
+check process TeamCopyRecord with pidfile /root/platform/TeamCopyRecord/RecordServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/TeamCopyRecord && ../bin/TeamCopyRecord --UNIQUE'"
+    stop program = "/bin/killall TeamCopyRecord"
+    if not exist then restart
+
+check process TeamCopyServer with pidfile /root/platform/TeamCopyServer/TeamCopyServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/TeamCopyServer && ../bin/TeamCopyServer --UNIQUE'"
+    stop program = "/bin/killall TeamCopyServer"
+    if not exist then restart
+
+check process GlobalActivityRecord with pidfile /root/platform/GlobalActivityRecord/RecordServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/GlobalActivityRecord && ../bin/GlobalActivityRecord --UNIQUE'"
+    stop program = "/bin/killall GlobalActivityRecord"
+    if not exist then restart
+
+check process GlobalActivityServer with pidfile /root/platform/GlobalActivityServer/GlobalActivityServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/GlobalActivityServer && ../bin/GlobalActivityServer --UNIQUE'"
+    stop program = "/bin/killall GlobalActivityServer"
+    if not exist then restart
+
+check process CenterServer with pidfile /root/platform/CenterServer/CenterServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/CenterServer && ../bin/CenterServer --UNIQUE'"
+    stop program = "/bin/killall CenterServer"
+    if not exist then restart
+
+check process UnionRecord with pidfile /root/platform/UnionRecord/RecordServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/UnionRecord && ../bin/UnionRecord --UNIQUE'"
+    stop program = "/bin/killall UnionRecord"
+    if not exist then restart
+
+check process UnionServer with pidfile /root/platform/UnionServer/UnionServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/platform/UnionServer && ../bin/UnionServer --UNIQUE'"
+    stop program = "/bin/killall UnionServer"
+    if not exist then restart
+
+check process AdminServer with pidfile /root/s1/AdminServer/AdminServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/s1/AdminServer && ../bin/AdminServer --UNIQUE'"
+    stop program = "/bin/killall AdminServer"
+    if not exist then restart
+
+check process RecordServer with pidfile /root/s1/RecordServer/RecordServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/s1/RecordServer && ../bin/RecordServer --UNIQUE'"
+    stop program = "/bin/killall RecordServer"
+    if not exist then restart
+
+check process WorldServer with pidfile /root/s1/WorldServer/WorldServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/s1/WorldServer && ../bin/WorldServer --UNIQUE'"
+    stop program = "/bin/killall WorldServer"
+    if not exist then restart
+
+check process SceneServer with pidfile /root/s1/SceneServer/SceneServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/s1/SceneServer && ../bin/SceneServer --UNIQUE'"
+    stop program = "/bin/killall SceneServer"
+    if not exist then restart
+
+check process GateServer with pidfile /root/s1/GateServer/GateServer.pid
+    start program = "/bin/bash -c 'source /etc/profile && cd /root/s1/GateServer && ../bin/GateServer --UNIQUE'"
+    stop program = "/bin/killall GateServer"
+    if not exist then restart

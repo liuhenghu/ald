@@ -1,0 +1,29 @@
+services:
+  web:
+    container_name: ald
+    image: 1005663978/ald:latest
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - PUBLIC_IP=192.168.3.8
+      - DDNS_ENABLE=false
+      - DDNS_DOMAIN=''
+    volumes:
+      - ./mysql-data:/www/mysql
+      - ./gm_data:/www/gm_data
+    ports:
+      - 81:81/tcp
+      - 2812:2812/tcp
+      - 3308:3306/tcp
+      - 21007:21007/tcp
+      - 21010:21010/tcp
+      - 30702:30702/tcp
+      - 31401:31401/udp
+      - 31402:31402/udp
+
+#     networks:
+#       - my-network
+
+# networks:
+#     my-network:
+#       external: true

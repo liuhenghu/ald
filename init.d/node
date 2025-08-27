@@ -1,0 +1,41 @@
+#!/bin/bash
+# chkconfig: 2345 10 90
+# description: Start and Stop node server
+
+. /etc/profile
+
+EXEC="/usr/local/nodejs/bin/node"
+JS="app.js"
+PIDFILE="/tmp/node_app.pid"
+
+case "$1" in
+  start)
+    if [ -f $PIDFILE ]; then
+        PID=$(cat $PIDFILE)
+        echo "Process is already running with PID: $PID"
+    else
+        echo "Starting node server..."
+        cd /www/wwwroot/gmald/src
+        nohup $EXEC $JS >log.app 2>&1 &
+        echo $! > $PIDFILE
+    fi
+    ;;
+  stop)
+    if [ -f $PIDFILE ]; then
+      PID=$(cat $PIDFILE)
+      echo "Stopping node server PID is $PID..."
+      kill $PID
+      rm $PIDFILE
+    else
+      echo "PID file not found. Process is not running."
+    fi
+    ;;
+  restart)
+    $0 stop
+    sleep 3
+    $0 start
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    ;;
+esac

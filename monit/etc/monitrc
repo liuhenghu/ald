@@ -1,0 +1,12 @@
+set daemon  30    # check services at 30 seconds intervals
+
+set log syslog
+
+set httpd port 2812 and
+    use address 0.0.0.0 
+    allow 0.0.0.0/0
+    allow admin:monit
+
+
+include /etc/monit.d/*
+

@@ -1,0 +1,8 @@
+[remi-php71]
+name=Remis PHP 7.1 RPM repository for Enterprise Linux 7 - $basearch
+baseurl=https://mirrors.ustc.edu.cn/remi/enterprise/7/php71/$basearch/
+#mirrorlist=https://rpms.remirepo.net/enterprise/7/php71/httpsmirror
+#mirrorlist=http://cdn.remirepo.net/enterprise/7/php71/mirror
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
