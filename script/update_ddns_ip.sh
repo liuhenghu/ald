@@ -1,5 +1,6 @@
 #!/bin/bash
 source /etc/profile
+current_dir=$(pwd)
 DDNS_DOMAIN=$(echo "${DDNS_DOMAIN}" | sed 's/"//g' | sed "s/'//g")
 file_list=(
 /root/platform/CenterServer/CenterServer.cfg
@@ -18,7 +19,11 @@ file_list=(
 ddns_ip=`dig +short ${DDNS_DOMAIN}`
 
 if [[ -z ${ddns_ip} ]];then
-    echo "The domain ${DDNS_DOMAIN} cannot be resolved, please enter the correct ENV:DDNS_DOMAIN"
+    if [[ ${current_dir} == "/root" ]];then
+        echo "$(date +'%F %T')The domain ${DDNS_DOMAIN} cannot be resolved, please enter the correct ENV:DDNS_DOMAIN" > /proc/1/fd/1
+    else
+        echo "$(date +'%F %T')The domain ${DDNS_DOMAIN} cannot be resolved, please enter the correct ENV:DDNS_DOMAIN"
+    fi
     exit 1
 fi
 
@@ -27,20 +32,42 @@ if [[ $ddns_ip =~ $regex ]]; then
     IFS='.' read -r -a octets <<< "$ddns_ip"
     for octet in "${octets[@]}"; do
         if ((octet < 0 || octet > 255)); then
-            echo "$ddns_ip is not compliant, please check ${DDNS_DOMAIN} resolution"
+            if [[ ${current_dir} == "/root" ]];then
+                echo "$(date +'%F %T')$ddns_ip is not compliant, please check ${DDNS_DOMAIN} resolution" > /proc/1/fd/1
+            else
+                echo "$(date +'%F %T')$ddns_ip is not compliant, please check ${DDNS_DOMAIN} resolution"
+            fi
             exit 1
         fi
     done
 else
-    echo "$ddns_ip is not compliant, please check ${DDNS_DOMAIN} resolution"
+    if [[ ${current_dir} == "/root" ]];then
+        echo "$(date +'%F %T')$ddns_ip is not compliant, please check ${DDNS_DOMAIN} resolution" > /proc/1/fd/1
+    else
+        echo "$(date +'%F %T')$ddns_ip is not compliant, please check ${DDNS_DOMAIN} resolution"
+    fi
     exit 1
 fi
-echo "DDNS_DOMAIN IP is ${ddns_ip}"
+if [[ ${current_dir} == "/root" ]];then
+    echo "$(date +'%F %T')The domain ${DDNS_DOMAIN} resolved IP is ${ddns_ip}" > /proc/1/fd/1
+else
+    echo "$(date +'%F %T')The domain ${DDNS_DOMAIN} resolved IP is ${ddns_ip}"
+fi
 
 now_ip=$(awk -F '=' '/ip/ {print $2}'  /root/platform/RelayServer/RelayServer.cfg | sed 's/[\r\n]//g')
-echo "The current IP is ${now_ip}"
+
+if [[ $current_dir == "/root" ]];then
+    echo "$(date +'%F %T')The current IP is ${now_ip}" > /proc/1/fd/1
+else
+    echo "$(date +'%F %T')The current IP is ${now_ip}"
+fi
+
 if [[ ${ddns_ip} != ${now_ip} ]];then
-    echo "Changing the current IP to ${ddns_ip}"
+    if [[ ${current_dir} == "/root" ]];then
+        echo "$(date +'%F %T')Changing the current IP to ${ddns_ip}" > /proc/1/fd/1
+    else
+        echo "$(date +'%F %T')Changing the current IP to ${ddns_ip}"
+    fi
     cp -r /file/*  /root/
     for i in ${file_list[@]};
     do
@@ -57,6 +84,11 @@ if [[ ${ddns_ip} != ${now_ip} ]];then
 
     monit_num=$(ps -ef  |grep -v grep |grep monit |wc -l)
     if [[ ${monit_num} -eq 1 ]]; then
+        if [[ ${current_dir} == "/root" ]];then
+            echo "$(date +'%F %T')Restarting all services through monit" > /proc/1/fd/1
+        else
+            echo "$(date +'%F %T')Restarting all services through monit"
+        fi
         monit restart all
     fi
 fi
