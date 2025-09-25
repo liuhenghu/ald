@@ -1,5 +1,6 @@
 #!/bin/bash
 source /etc/profile
+export TZ=Asia/Shanghai
 current_dir=$(pwd)
 DDNS_DOMAIN=$(echo "${DDNS_DOMAIN}" | sed 's/"//g' | sed "s/'//g")
 file_list=(
